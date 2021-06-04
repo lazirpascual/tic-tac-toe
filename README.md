@@ -21,3 +21,4 @@ From The Odin Project's [curriculum](https://www.theodinproject.com/paths/full-s
 * Git and GitHub
 
 ### What I Learned 
+In this project, I learned how to properly organize my code using Object Oriented Techniques such as Factory Functions and Module Patterns. I also improved my knowledge Javascript topics such as scope, closure, and inheritance within objects.
