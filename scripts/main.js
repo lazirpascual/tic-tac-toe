@@ -52,8 +52,15 @@ const displayController = (() => {
         checkWinner(0, 4, 8, player);
         checkWinner(2, 4, 6, player);
     };
+    const checkForTie = () => {
+        if (displayController.turnCounter == 10) {
+            playerNameContainer.style.color = 'goldenrod';
+            playerNameContainer.textContent = "It's a tie!";
+            boardContainer.classList.add('disable-button');
+        }
+    }
 
-    return {turnCounter, decideTurn, checkWinnerAll};
+    return {turnCounter, decideTurn, checkWinnerAll, checkForTie};
 })();
 
 // player object contained in a factory function
@@ -69,6 +76,7 @@ const Player = (playerName, move) => {
         playerNameContainer.textContent = togglePlayer() + "'s Turn: " + toggleMove();
         displayController.turnCounter++; // increment counter to update turn
     }
+
     return {playerName, move, makeTurn};
 }
 
@@ -85,14 +93,17 @@ boardContainer.addEventListener('click', function(e) {
     // if the board is currently empty, make a turn
     if (gameBoard.boardBlock[index].childNodes.length == 0) 
     {
+        
         if (displayController.decideTurn(displayController.turnCounter) == "odd") {
             playerOne.makeTurn(index);
-            displayController.checkWinnerAll(playerOne);
         } else {
             playerTwo.makeTurn(index);
-            displayController.checkWinnerAll(playerTwo);
         }
     }
+    // check for tie and winning plays
+    displayController.checkForTie();
+    displayController.checkWinnerAll(playerOne);
+    displayController.checkWinnerAll(playerTwo);
 });
 
 // clear board on button click

@@ -51,7 +51,7 @@ body {
 }
 
 .block-background {
-    background-color: rgb(238, 163, 163);
+    background-color: rgb(230, 182, 182);
 }
 
 .player-name {
@@ -83,3 +83,4 @@ body {
     pointer-events: none;
     opacity: 0.6;
 }
+
