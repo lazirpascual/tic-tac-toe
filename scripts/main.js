@@ -31,7 +31,7 @@ const displayController = (() => {
     return {turnCounter, decideTurn};
 })();
 
-// player object container in a factory function
+// player object contained in a factory function
 const Player = (playerName, move) => {
     const toggleMove = () => (move == "X" ? "O" : "X");
     const togglePlayer = () => (playerName == "Player 1" ? "Player 2" : "Player 1");

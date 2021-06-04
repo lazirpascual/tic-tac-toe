@@ -1,6 +1,6 @@
 # Tic Tac Toe
 
-This is a Javascript project that allows you to play a game of Tic Tac Toe against a bot.
+This is a Javascript project that allows you to play a game of Tic Tac Toe.
 
 From The Odin Project's [curriculum](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/tic-tac-toe).
 
