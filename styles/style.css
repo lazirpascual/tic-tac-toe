@@ -51,7 +51,7 @@ body {
 }
 
 .block-background {
-    background-color: rgb(243, 215, 215);
+    background-color: rgb(238, 163, 163);
 }
 
 .player-name {
@@ -77,4 +77,9 @@ body {
     background-color: #657a80;
     box-shadow: 3px 3px 1px;
     cursor: pointer;
+}
+
+.disable-button {
+    pointer-events: none;
+    opacity: 0.6;
 }

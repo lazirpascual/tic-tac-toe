@@ -36,6 +36,7 @@ const displayController = (() => {
                 gameBoard.boardBlock[index1].classList.add('block-background');
                 gameBoard.boardBlock[index2].classList.add('block-background');
                 gameBoard.boardBlock[index3].classList.add('block-background');
+                boardContainer.classList.add('disable-button');
             }
     };
     const checkWinnerAll = player => {
@@ -60,9 +61,9 @@ const Player = (playerName, move) => {
     const toggleMove = () => (move == "X" ? "O" : "X");
     const togglePlayer = () => (playerName == "Player 1" ? "Player 2" : "Player 1");
     const makeTurn = index => {
-        gameBoard.boardBlock[index].style.color = (move == "O") ? "rgb(170, 35, 35)" : "black";
-        gameBoard.boardBlock[index].textContent = move;
+        gameBoard.boardBlock[index].style.color = (move == "O") ? "rgb(170, 35, 35)" : "black";   
         gameBoard.boardBlock[index].classList.add('player-move');
+        gameBoard.boardBlock[index].textContent = move;
         playerNameContainer.style.color = (playerName == "Player 1") ? "rgb(170, 35, 35)" : "black";
         playerNameContainer.classList.add('player-name');
         playerNameContainer.textContent = togglePlayer() + "'s Turn: " + toggleMove();
@@ -78,7 +79,7 @@ const playerTwo = Player("Player 2", "O");
 // create the board when page loads
 gameBoard.makeBoard();
 
-// make a turn based on player on button click
+// make a player-based turn on button click
 boardContainer.addEventListener('click', function(e) {
     let index = e.target.getAttribute('data-index');
     // if the board is currently empty, make a turn
@@ -101,6 +102,7 @@ restartButton.addEventListener('click', function(e) {
     displayController.turnCounter = 1;  // restart the turn
     playerNameContainer.textContent = "Player 1's Turn: X";
     playerNameContainer.style.color = "black";
+    boardContainer.classList.remove('disable-button');
 });
 
 
