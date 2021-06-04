@@ -1,5 +1,6 @@
 const boardContainer = document.querySelector('#gameboard');
 const restartButton = document.querySelector('#restart');
+const playerNameContainer = document.querySelector('#player');
 
 // gameboard object contained in a module pattern
 const gameBoard = (() => {
@@ -32,21 +33,24 @@ const displayController = (() => {
 
 // player object container in a factory function
 const Player = (playerName, move) => {
+    const toggleMove = () => (move == "X" ? "O" : "X");
+    const togglePlayer = () => (playerName == "Player 1" ? "Player 2" : "Player 1");
     const makeTurn = index => {
         const playerMarker = document.createElement('h1');
         playerMarker.textContent = move;
         playerMarker.classList.add('player-move');
         gameBoard.boardBlock[index].appendChild(playerMarker);
-        displayController.turnCounter++;
+        playerNameContainer.textContent = togglePlayer() + "'s Turn: " + toggleMove();
+        displayController.turnCounter++; // increment counter to update turn
     }
     return {playerName, move, makeTurn};
 }
 
 // instantiate two instances of Player
-const playerOne = Player("Player One", "X");
-const playerTwo = Player("Player Two", "O");
+const playerOne = Player("Player 1", "X");
+const playerTwo = Player("Player 2", "O");
 
-// create the board
+// create the board when page loads
 gameBoard.makeBoard();
 
 // make a turn based on player on button click
@@ -67,6 +71,8 @@ boardContainer.addEventListener('click', function(e) {
 restartButton.addEventListener('click', function(e) {
     gameBoard.removeBoard(boardContainer);
     gameBoard.makeBoard();
+    displayController.turnCounter = 1;  // restart the turn
+    playerNameContainer.textContent = "Player 1's Turn: X";
 });
 
 
