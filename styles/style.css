@@ -16,11 +16,13 @@ body {
 }
 
 .header {
+    font-family: "Varela Round";
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
     background-color: rgb(143, 178, 192);
-    height: 15%;
+    height: 17%;
     font-size: 70px;
     color: rgb(246, 248, 248);
 }
@@ -29,9 +31,16 @@ body {
 }
 
 .gameboard-container {
+    display: grid;
+    grid-template-columns: repeat(3, 167px);
     margin: 2em auto 1.5em auto;
-    height: 501px;
+    height: 510px;
     width: 501px;
+    border: 1px solid #000000;
+}
+
+.gameboard-block {
+    height: 167px;
     border: 2px solid #000000;
 }
 
@@ -42,4 +51,10 @@ body {
     border-radius: 5px;
     font-size: 20px;
     color: rgb(246, 248, 248);
+}
+
+.restart-button:hover {
+    background-color: #657a80;
+    box-shadow: 3px 3px 1px;
+    cursor: pointer;
 }
