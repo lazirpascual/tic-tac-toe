@@ -27,8 +27,32 @@ const gameBoard = (() => {
 const displayController = (() => {
     let turnCounter = 1;
     const decideTurn = counter => (counter % 2 == 0) ? "even" : "odd";
+    const checkWinner = (index1,index2,index3, player) => {
+        if (gameBoard.boardBlock[index1].textContent == player.move &&
+            gameBoard.boardBlock[index2].textContent == player.move &&
+            gameBoard.boardBlock[index3].textContent == player.move) {
+                playerNameContainer.style.color = (player.move == "O" ? "red" : "black");
+                playerNameContainer.textContent = player.playerName + " Wins!";
+                gameBoard.boardBlock[index1].classList.add('block-background');
+                gameBoard.boardBlock[index2].classList.add('block-background');
+                gameBoard.boardBlock[index3].classList.add('block-background');
+            }
+    };
+    const checkWinnerAll = player => {
+        // check for rows
+        checkWinner(0, 1, 2, player);
+        checkWinner(3, 4, 5, player);
+        checkWinner(6, 7, 8, player);
+        // check for columns
+        checkWinner(0, 3, 6, player);
+        checkWinner(1, 4, 7, player);
+        checkWinner(2, 5, 8, player);
+        // check for diagonals
+        checkWinner(0, 4, 8, player);
+        checkWinner(2, 4, 6, player);
+    };
 
-    return {turnCounter, decideTurn};
+    return {turnCounter, decideTurn, checkWinnerAll};
 })();
 
 // player object contained in a factory function
@@ -44,7 +68,6 @@ const Player = (playerName, move) => {
         playerNameContainer.textContent = togglePlayer() + "'s Turn: " + toggleMove();
         displayController.turnCounter++; // increment counter to update turn
     }
-
     return {playerName, move, makeTurn};
 }
 
@@ -63,8 +86,10 @@ boardContainer.addEventListener('click', function(e) {
     {
         if (displayController.decideTurn(displayController.turnCounter) == "odd") {
             playerOne.makeTurn(index);
+            displayController.checkWinnerAll(playerOne);
         } else {
             playerTwo.makeTurn(index);
+            displayController.checkWinnerAll(playerTwo);
         }
     }
 });

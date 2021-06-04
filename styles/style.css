@@ -50,6 +50,10 @@ body {
     cursor: pointer;
 }
 
+.block-background {
+    background-color: rgb(243, 215, 215);
+}
+
 .player-name {
     font-size: 50px;
 }
