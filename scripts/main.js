@@ -40,6 +40,7 @@ const Player = (playerName, move) => {
         playerMarker.textContent = move;
         playerMarker.classList.add('player-move');
         gameBoard.boardBlock[index].appendChild(playerMarker);
+        playerNameContainer.classList.add('player-name');
         playerNameContainer.textContent = togglePlayer() + "'s Turn: " + toggleMove();
         displayController.turnCounter++; // increment counter to update turn
     }

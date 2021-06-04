@@ -34,6 +34,7 @@ body {
     height: 510px;
     width: 501px;
     border: 1px solid #000000;
+    background-color: rgb(231, 226, 215);
 }
 
 .gameboard-block {
@@ -49,6 +50,11 @@ body {
     cursor: pointer;
 }
 
+.player-name {
+    color: rgb(170, 35, 35);
+    font-size: 50px;
+}
+
 .player-move {
     font-size: 90px;
 }
@@ -58,8 +64,9 @@ body {
     width: 10%;
     background-color: rgb(102, 168, 199);
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 25px;
     color: rgb(246, 248, 248);
+    font-weight: bold;
 }
 
 .restart-button:hover {
