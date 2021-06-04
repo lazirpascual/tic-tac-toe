@@ -60,11 +60,11 @@ body {
 }
 
 .restart-button {
-    height: 45px;
-    width: 10%;
+    height: 70px;
+    width: 200px;
     background-color: rgb(102, 168, 199);
     border-radius: 5px;
-    font-size: 25px;
+    font-size: 1.7em;
     color: rgb(246, 248, 248);
     font-weight: bold;
 }
