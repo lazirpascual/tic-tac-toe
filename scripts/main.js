@@ -1,4 +1,5 @@
 const boardContainer = document.querySelector('#gameboard');
+const restartButton = document.querySelector('#restart');
 
 // gameboard object contained in a module pattern
 const gameBoard = (() => {
@@ -12,8 +13,13 @@ const gameBoard = (() => {
         boardBlock[board].setAttribute('data-index', board);
         }
     };
+    const removeBoard = parent => {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    };
 
-    return {boardBlock, makeBoard};
+    return {boardBlock, makeBoard, removeBoard};
 })();
 
 // displayController object contained in a module pattern
@@ -56,5 +62,13 @@ boardContainer.addEventListener('click', function(e) {
         }
     }
 });
+
+// clear board on button click
+restartButton.addEventListener('click', function(e) {
+    gameBoard.removeBoard(boardContainer);
+    gameBoard.makeBoard();
+});
+
+
     
         
