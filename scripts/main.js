@@ -36,14 +36,15 @@ const Player = (playerName, move) => {
     const toggleMove = () => (move == "X" ? "O" : "X");
     const togglePlayer = () => (playerName == "Player 1" ? "Player 2" : "Player 1");
     const makeTurn = index => {
-        const playerMarker = document.createElement('h1');
-        playerMarker.textContent = move;
-        playerMarker.classList.add('player-move');
-        gameBoard.boardBlock[index].appendChild(playerMarker);
+        gameBoard.boardBlock[index].style.color = (move == "O") ? "rgb(170, 35, 35)" : "black";
+        gameBoard.boardBlock[index].textContent = move;
+        gameBoard.boardBlock[index].classList.add('player-move');
+        playerNameContainer.style.color = (playerName == "Player 1") ? "rgb(170, 35, 35)" : "black";
         playerNameContainer.classList.add('player-name');
         playerNameContainer.textContent = togglePlayer() + "'s Turn: " + toggleMove();
         displayController.turnCounter++; // increment counter to update turn
     }
+
     return {playerName, move, makeTurn};
 }
 
@@ -74,6 +75,7 @@ restartButton.addEventListener('click', function(e) {
     gameBoard.makeBoard();
     displayController.turnCounter = 1;  // restart the turn
     playerNameContainer.textContent = "Player 1's Turn: X";
+    playerNameContainer.style.color = "black";
 });
 
 

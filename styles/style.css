@@ -51,12 +51,12 @@ body {
 }
 
 .player-name {
-    color: rgb(170, 35, 35);
     font-size: 50px;
 }
 
 .player-move {
-    font-size: 90px;
+    font-size: 5em;
+    font-weight: bold;
 }
 
 .restart-button {
